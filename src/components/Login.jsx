@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../services/authServices";
 import { login } from "../features/auth/userSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 function Login() {
   const [error, setError] = useState(null);
+  const [toggled, setToggled] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -42,6 +45,10 @@ function Login() {
       .required("Phone Number Required"),
     password: Yup.string().required("Password Required"),
   });
+
+  const toggleEyeIcon = () => {
+    setToggled(!toggled);
+  };
 
   return (
     <div className="login-container">
@@ -94,18 +101,20 @@ function Login() {
                 <label htmlFor="password">Password</label>
                 <input
                   className="form-input"
-                  type="password"
+                  type={toggled ? "text" : "password"}
                   name="password"
                   id="password"
                   value={values.password}
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
-                <img
+
+                <FontAwesomeIcon
+                  onClick={toggleEyeIcon}
                   className="eye-icon"
-                  src="/assets/Icons/Icon Right.svg"
-                  alt="icon"
+                  icon={toggled ? faEye : faEyeSlash}
                 />
+
                 {errors.password && touched.password && (
                   <div className="field-error">{errors.password}</div>
                 )}

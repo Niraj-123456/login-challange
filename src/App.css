@@ -68,6 +68,7 @@ label {
   color: var(--text-gray);
 }
 
+input[type="text"],
 input[type="number"],
 input[type="password"] {
   display: inline-block;
@@ -88,15 +89,17 @@ input[type="password"] {
   border: solid 2px navy;
 }
 
-.eye-icon {
-  margin-left: -35px;
-  margin-bottom: -5px;
+form .eye-icon {
+  margin-left: -40px;
+  margin-bottom: -3px;
+  font-size: 1.3rem;
   cursor: pointer;
   color: var(--icon-color);
 }
 
-.eye-icon:hover {
-  color: var;
+form .eye-icon:hover {
+  transform: scale(1.2);
+  color: red;
 }
 
 input[type="checkbox"] {
@@ -184,6 +187,7 @@ input::placeholder {
     margin-bottom: 40px;
   }
 
+  input[type="text"],
   input[type="number"],
   input[type="password"] {
     width: 374px;
