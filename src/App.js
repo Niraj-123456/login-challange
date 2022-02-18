@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import { ToastContainer } from "react-toastify";
@@ -16,10 +18,12 @@ function App() {
     <Router>
       <div className="App">
         <ToastContainer />
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard user={user} />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

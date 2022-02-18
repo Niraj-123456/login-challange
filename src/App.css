@@ -4,6 +4,7 @@
   --button-primary: #f50100;
   --button-secondary: #e0e0e0;
   --button-inactive: #fa8080;
+  --text-primary: #000000;
   --text-white: #ffffff;
   --text-gray: #6b7276;
   --text-gray-2: #4f4f4f;
@@ -12,6 +13,7 @@
   --link-seconday: #2f80ed;
   --icon-color: #979797;
   --icon-color-active: #979797;
+  font-size: 16px;
 }
 
 *,
