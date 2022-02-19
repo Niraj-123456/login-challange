@@ -51,106 +51,96 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-wrapper">
-        <div className="login-form">
-          {error ? (
-            <li style={{ color: "red", fontSize: "12px", marginBottom: "1em" }}>
-              {error}
-            </li>
-          ) : (
-            ""
-          )}
-          <h1>Login</h1>
-          <Formik
-            initialValues={{
-              phoneNumber: "",
-              password: "",
-            }}
-            validationSchema={LoginSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              handleSubmit(values);
-              setSubmitting(false);
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              dirty,
-              handleBlur,
-              handleSubmit,
-              handleChange,
-              isSubmitting,
-            }) => (
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="phoneNumber">Phone Number</label>
-                <input
-                  className="form-input"
-                  type="number"
-                  name="phoneNumber"
-                  id="phoneNumber"
-                  value={values.phoneNumber}
-                  placeholder="Enter phone number"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                />
-                {errors.phoneNumber && touched.phoneNumber && (
-                  <div className="field-error">{errors.phoneNumber}</div>
-                )}
-                <label htmlFor="password">Password</label>
-                <input
-                  className="form-input"
-                  type={toggled ? "text" : "password"}
-                  name="password"
-                  id="password"
-                  value={values.password}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                />
-
-                <FontAwesomeIcon
-                  onClick={toggleEyeIcon}
-                  className="eye-icon"
-                  icon={toggled ? faEye : faEyeSlash}
-                />
-
-                {errors.password && touched.password && (
-                  <div className="field-error">{errors.password}</div>
-                )}
-                <input
-                  className="form-input"
-                  type="checkbox"
-                  id="rememberPhoneNumber"
-                  name="rememberPhoneNumber"
-                  value="remember"
-                />
-                <label htmlFor="rememberPhoneNumber">
-                  Remember my phone number.
-                </label>
-                <a href="#">Forgot Password?</a>
-                <button
-                  className="button primary"
-                  type="submit"
-                  disabled={isSubmitting || !dirty}
-                >
-                  Submit
-                </button>
-              </form>
+    <div className="login-form">
+      {error ? (
+        <li style={{ color: "red", fontSize: "12px", marginBottom: "1em" }}>
+          {error}
+        </li>
+      ) : (
+        ""
+      )}
+      <h1>Login</h1>
+      <Formik
+        initialValues={{
+          phoneNumber: "",
+          password: "",
+        }}
+        validationSchema={LoginSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          handleSubmit(values);
+          setSubmitting(false);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          dirty,
+          handleBlur,
+          handleSubmit,
+          handleChange,
+          isSubmitting,
+        }) => (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input
+              className="form-input"
+              type="number"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={values.phoneNumber}
+              placeholder="Enter phone number"
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+            {errors.phoneNumber && touched.phoneNumber && (
+              <div className="field-error">{errors.phoneNumber}</div>
             )}
-          </Formik>
-          <a className="no-account" href="#">
-            Don't have an account yet?
-          </a>
-          <button className="button secondary">Create Account</button>
-        </div>
-        <div className="login-bg-image">
-          <img
-            src="/assets/Images/Login & Registration/unsplash_F1I4IN86NiE.png"
-            alt="login-bg"
-          />
-        </div>
-      </div>
+            <label htmlFor="password">Password</label>
+            <input
+              className="form-input"
+              type={toggled ? "text" : "password"}
+              name="password"
+              id="password"
+              value={values.password}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+
+            <FontAwesomeIcon
+              onClick={toggleEyeIcon}
+              className="eye-icon"
+              icon={toggled ? faEye : faEyeSlash}
+            />
+
+            {errors.password && touched.password && (
+              <div className="field-error">{errors.password}</div>
+            )}
+            <input
+              className="form-input"
+              type="checkbox"
+              id="rememberPhoneNumber"
+              name="rememberPhoneNumber"
+              value="remember"
+            />
+            <label htmlFor="rememberPhoneNumber">
+              Remember my phone number.
+            </label>
+            <a href="#">Forgot Password?</a>
+            <button
+              className="button primary"
+              type="submit"
+              disabled={isSubmitting || !dirty}
+            >
+              Login
+            </button>
+          </form>
+        )}
+      </Formik>
+      <a className="no-account" href="#">
+        Don't have an account yet?
+      </a>
+      <button className="button secondary">Create Account</button>
     </div>
   );
 }
