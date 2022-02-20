@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../services/authServices";
 import { login } from "../features/auth/userSlice";
@@ -140,7 +140,9 @@ function Login() {
       <a className="no-account" href="#">
         Don't have an account yet?
       </a>
-      <button className="button secondary">Create Account</button>
+      <button className="button secondary">
+        <Link to="/register">Create Account</Link>
+      </button>
     </div>
   );
 }

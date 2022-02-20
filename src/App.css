@@ -138,8 +138,6 @@ input::placeholder {
   width: 100%;
   height: 46px;
   border: none;
-  font-family: "SF Pro Display";
-  font-style: normal;
   font-weight: 600;
   border-radius: 5px;
   font-size: 1rem;
@@ -195,7 +193,7 @@ input::placeholder {
     width: 374px;
   }
 
-  input[type="submit"] {
+  button {
     width: 374px;
   }
 

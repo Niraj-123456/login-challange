@@ -34,7 +34,7 @@ export default Navbar;
 
 const Nav = styled.nav`
   background-color: var(--button-secondary);
-  padding: 10px;
+  padding: 12px;
   display: flex;
   align-items: center;
   color: var(--text-primary);
@@ -43,9 +43,10 @@ const Nav = styled.nav`
 
 const Logo = styled.a`
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  margin-left: 5em;
+  margin-left: 3em;
+  color: var(--button-primary);
 `;
 
 const NavMenu = styled.ul`
@@ -68,7 +69,7 @@ const NavMenu = styled.ul`
         content: "";
         position: absolute;
         height: 3px;
-        bottom: -17px;
+        bottom: -19px;
         left: 0;
         right: 0;
         background: var(--button-primary);

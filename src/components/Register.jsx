@@ -1,66 +1,98 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 const Register = () => {
-  const [state, setState] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmpassword: "",
+  const registerSchema = Yup.object().shape({
+    username: Yup.string().required("Username required"),
+    email: Yup.string().required("Email required"),
+    password: Yup.string().required("Password required"),
+    confirmpassword: Yup.string().required("Confirm Password required"),
   });
-
-  const handleChange = ({ currentTarget }) => {
-    setState({
-      ...state,
-      [currentTarget.name]: currentTarget.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(state);
-  };
-
   return (
     <RegisterForm>
       <Heading>Register</Heading>
-      <Form onSubmit={handleSubmit}>
-        <label htmlFor="username">UserName</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={state.username}
-          onChange={handleChange}
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={state.email}
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={state.password}
-          onChange={handleChange}
-        />
-        <label htmlFor="confirmpassword">Confirm Password</label>
-        <input
-          type="password"
-          name="confirmpassword"
-          id="confirmpassword"
-          value={state.confirmpassword}
-          onChange={handleChange}
-        />
-        <button type="submit" className="button primary">
-          Register
-        </button>
-      </Form>
+      <Formik
+        initialValues={{
+          username: "",
+          email: "",
+          password: "",
+          confirmpassword: "",
+        }}
+        validationSchema={registerSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          console.log(values);
+          setSubmitting(false);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          dirty,
+          handleBlur,
+          handleSubmit,
+          handleChange,
+          isSubmitting,
+        }) => (
+          <Form onSubmit={handleSubmit}>
+            <label htmlFor="username">UserName</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value={values.username}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+            {errors.username && touched.username && (
+              <div>{errors.username}</div>
+            )}
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              value={values.email}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+            {errors.email && touched.email && <div>{errors.email}</div>}
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={values.password}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+            {errors.password && touched.password && (
+              <div>{errors.password}</div>
+            )}
+            <label htmlFor="confirmpassword">Confirm Password</label>
+            <input
+              type="password"
+              name="confirmpassword"
+              id="confirmpassword"
+              value={values.confirmpassword}
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+            {errors.confirmpassword && touched.confirmpassword && (
+              <div>{errors.confirmpassword}</div>
+            )}
+            <button
+              type="submit"
+              className="button primary"
+              disabled={isSubmitting || !dirty}
+            >
+              Register
+            </button>
+          </Form>
+        )}
+      </Formik>
       <a href="#">Already Have an account?</a>
     </RegisterForm>
   );
@@ -75,8 +107,9 @@ const RegisterForm = styled.div`
 
   a {
     display: block;
-    padding-block: 10px;
     text-align: center;
+    margin-top: 20px;
+    color: var(--link-primary);
   }
 `;
 
