@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Navbar = () => {
@@ -8,16 +8,16 @@ const Navbar = () => {
       <Logo>Logo</Logo>
       <NavMenu>
         <li>
-          <a href="#">Home</a>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <a href="/about">About</a>
+          <NavLink to="/about">About</NavLink>
         </li>
         <li>
-          <a href="/services">Services</a>
+          <NavLink to="/services">Services</NavLink>
         </li>
         <li>
-          <a href="/contact">Contact</a>
+          <NavLink to="/contact">Contact</NavLink>
         </li>
       </NavMenu>
       <Login>
@@ -78,6 +78,7 @@ const NavMenu = styled.ul`
         transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
       }
 
+      &.active,
       &:hover {
         &:before {
           transform: scaleX(1);

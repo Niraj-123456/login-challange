@@ -15,6 +15,7 @@ const Register = () => {
       [currentTarget.name]: currentTarget.value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(state);
@@ -60,6 +61,7 @@ const Register = () => {
           Register
         </button>
       </Form>
+      <a href="#">Already Have an account?</a>
     </RegisterForm>
   );
 };
@@ -70,6 +72,12 @@ const RegisterForm = styled.div`
   width: 466px;
   height: auto;
   margin: auto;
+
+  a {
+    display: block;
+    padding-block: 10px;
+    text-align: center;
+  }
 `;
 
 const Heading = styled.h1`
@@ -79,4 +87,8 @@ const Heading = styled.h1`
   margin-bottom: 40px;
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+  button {
+    margin-top: 20px;
+  }
+`;
